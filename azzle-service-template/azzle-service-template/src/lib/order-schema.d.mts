@@ -1,0 +1,10 @@
+import type { OrderField } from "../config/service-types";
+export const FIELDS: OrderField[];
+export const ORDER_PREFIX: string;
+export function isOrderId(id: unknown): boolean;
+export function validateOrderInput(raw?: Record<string, unknown>): { values: Record<string, any>; errors: Record<string, string> };
+export function publicFields(values: Record<string, any>): Record<string, any>;
+export function privateCanonical(values: Record<string, any>): string;
+export function privateHash(values: Record<string, any>): `0x${string}` | null;
+export function scrapeField(): OrderField | undefined;
+export function summarize(values: Record<string, any>): string;
