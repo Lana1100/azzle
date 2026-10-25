@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Neutral theme. The five brand tokens come from the service config (brand.ink/paper/accent/accentInk/radius) and
+ * are injected as CSS variables on <html> by src/app/layout.tsx; the defaults below only apply if that is removed.
+ * Utility names: text-ink, bg-paper, bg-brand, text-brand-ink, text-ink-64 (muted ink), border-rule (hairline).
+ */
+:root {
+  --brand-ink: #18181B;
+  --brand-paper: #FAFAF9;
+  --brand-accent: #4F46E5;
+  --brand-accent-ink: #FFFFFF;
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-heading: var(--font-sans);
+  --font-display: var(--font-sans);
+  --color-ink: var(--brand-ink);
+  --color-paper: var(--brand-paper);
+  --color-brand: var(--brand-accent);
+  --color-brand-ink: var(--brand-accent-ink);
+  --color-ink-64: color-mix(in oklab, var(--brand-ink) 64%, var(--brand-paper));
+  --color-paper-64: color-mix(in oklab, var(--brand-paper) 64%, var(--brand-ink));
+  --color-rule: color-mix(in oklab, var(--brand-ink) 14%, var(--brand-paper));
+  --color-rule-ink: color-mix(in oklab, var(--brand-paper) 22%, var(--brand-ink));
+  --ease-out: cubic-bezier(.2,.7,.1,1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: var(--brand-paper);
+  --foreground: var(--brand-ink);
+  --card: color-mix(in oklab, var(--brand-paper) 60%, white);
+  --card-foreground: var(--brand-ink);
+  --popover: var(--card);
+  --popover-foreground: var(--brand-ink);
+  --primary: var(--brand-ink);
+  --primary-foreground: var(--brand-paper);
+  --secondary: color-mix(in oklab, var(--brand-ink) 6%, var(--brand-paper));
+  --secondary-foreground: var(--brand-ink);
+  --muted: color-mix(in oklab, var(--brand-ink) 5%, var(--brand-paper));
+  --muted-foreground: color-mix(in oklab, var(--brand-ink) 64%, var(--brand-paper));
+  --accent: color-mix(in oklab, var(--brand-accent) 10%, var(--brand-paper));
+  --accent-foreground: var(--brand-ink);
+  --destructive: #B42318;
+  --border: color-mix(in oklab, var(--brand-ink) 14%, var(--brand-paper));
+  --input: color-mix(in oklab, var(--brand-ink) 24%, var(--brand-paper));
+  --ring: var(--brand-accent);
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; }
+  html { @apply font-sans; }
+}
+
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--brand-accent);color:var(--brand-accent-ink)}
+.font-display{font-family:var(--font-display);font-weight:700;letter-spacing:-.02em}
+.font-display-i{font-family:var(--font-display);font-weight:400;letter-spacing:-.01em}
+.wrapx{padding-inline:max(clamp(20px,5vw,80px),calc((100% - 1280px)/2))}
+.kicker{font-family:var(--font-mono);font-size:11px;line-height:16px;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+@media (min-width:768px){.kicker{font-size:12px}}
+.balance{text-wrap:balance}.pretty{text-wrap:pretty}
+.ulink{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .3s var(--ease-out)}
+.ulink:hover,.ulink:focus-visible{background-size:100% 1px}
+.btn-ink{transition:opacity .2s}.btn-ink:hover{opacity:.88}
+
+/* ───── Header wallet pill + wallet modal ───── */
+.wm-pill{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;border:1px solid var(--color-rule);border-radius:999px;background:var(--card);color:var(--brand-ink);padding:7px 12px;font-size:13px;line-height:16px;font-weight:500;transition:border-color .2s}
+.wm-pill:hover,.wm-pill:focus-visible{border-color:var(--brand-ink)}
+.wm-backdrop{position:fixed;inset:0;z-index:60;background:color-mix(in oklab, var(--brand-ink) 40%, transparent);backdrop-filter:blur(3px)}
+.wm-modal{position:fixed;z-index:61;left:50%;top:50%;transform:translate(-50%,-50%);width:min(440px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;
+  border-radius:var(--radius-xl);background:var(--card);color:var(--brand-ink);outline:none;box-shadow:0 30px 70px -20px rgba(0,0,0,.35),0 0 0 1px var(--color-rule)}
+.wm-modal[data-starting-style],.wm-modal[data-ending-style]{opacity:0;transform:translate(-50%,-48%)}
+.wm-modal{transition:opacity .2s,transform .3s var(--ease-out)}
+.wm-band{display:flex;align-items:center;gap:14px;background:var(--brand-ink);padding:12px 16px 12px 24px}
+.wm-band .kicker{flex:0 0 auto}
+.wm-x{color:var(--color-paper-64);padding:4px;margin-right:-4px}.wm-x:hover{color:var(--brand-paper)}
+.wm-row{display:grid;grid-template-columns:auto 1fr auto;align-items:start;gap:10px;padding:9px 0;border-top:1px solid var(--color-rule)}
+.wm-leader{height:1px;margin-top:14px;background:repeating-linear-gradient(90deg,var(--brand-ink) 0 2px,transparent 2px 6px);opacity:.2}
+.wm-copy{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--color-rule);border-radius:6px;padding:1px 6px;font-size:11px;color:var(--brand-ink)}
+.wm-copy:hover{border-color:var(--brand-ink)}
+.wm-window{border:1px dashed var(--color-rule);border-radius:var(--radius);background:var(--muted);padding:14px}
+.wm-window .btn-ink{border-radius:var(--radius)}
+
+/* Rendered markdown (text deliverables) */
+.prose-lite{line-height:1.6}.prose-lite h1,.prose-lite h2,.prose-lite h3{font-weight:700;margin:1em 0 .4em}
+.prose-lite p{margin:.5em 0}.prose-lite ul{list-style:disc;padding-left:1.2em}
