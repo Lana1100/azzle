@@ -38,7 +38,7 @@ const service = {
   // public:true fields go into the on-chain scope in clear text (anyone can read them!).
   // Private fields are stored off-chain; only a keccak256 of all private values goes on-chain.
   orderFields: [
-    { name: "sourceUrl", type: "url", label: "Your product link", placeholder: "https://github.com/you/project", required: true, public: true, scrape: true,
+    { name: "audience", type: "select", label: "Audience", default: "developers",
       help: "A GitHub repo, docs page or website. The agent reads it to write the brief." },
     { name: "audience", type: "select", label: "Audience", default: "developers",
       options: [{ value: "developers", label: "Developers" }, { value: "founders", label: "Founders" }, { value: "consumers", label: "Consumers" }] },
