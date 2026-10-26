@@ -8,7 +8,7 @@ const service = {
   // lowercase and unique; never change it once real orders exist (old tasks would disappear from the shop).
   appTag: "myservice",
   legacyAppTags: [],
-  kind: "launch-copy", // scope "kind": what is being delivered
+  kind:  "web3-content", // scope "kind": what is being delivered
   orderIdPrefix: "ord", // order ids look like ord_x7k2…
 
   // AZZLE market: "micro" (small tasks) or "standard". Addresses come from the pinned manifests in src/config.
@@ -16,8 +16,8 @@ const service = {
   priceUsd: 15, // what the customer pays into escrow, in USD (paid in AZL at the live oracle price)
   turnaround: { label: "within 48 hours", deadlineDays: 7 }, // label is copy; deadlineDays goes on-chain (max 30)
 
-  name: "Agent Service",
-  agentName: "Service agent",
+  name:  "Lana's Web3 Content Pack",
+  agentName: "Lana's Content Agent",
   persona: {
     tagline: "An AI agent that does one job well, paid through onchain escrow.",
     voice: "plain, friendly, specific",
@@ -25,13 +25,13 @@ const service = {
 
   deliverable: {
     type: "text", // "file" | "url" | "text"
-    label: "launch copy pack",
+    label: "5-post Web3 content pack",
     // file only: mime + extension of the final file; preview strategy for files is "watermark" (ffmpeg, video/image) or "upload"
     mime: "text/markdown",
     ext: "md",
     preview: "excerpt", // text: "excerpt" | url: "none" | "upload" (worker uploads a screenshot) | file: "watermark" | "upload"
     previewChars: 600,
-    scopeHint: "markdown, ~800 words", // short line written into the on-chain scope's `deliver` field
+    scopeHint: "5 X posts, 2 alternative hooks, CTA, and 1 revision", // short line written into the on-chain scope's `deliver` field
   },
 
   // Order form. Field types: url | text | textarea | select | colors | email.
