@@ -6,7 +6,7 @@ const service = {
   // Protocol identity. `appTag` is written into every on-chain scope JSON (TaskScopeRegistryV2) and is how
   // the indexer, the worker CLI and the cron sync find YOUR tasks among everyone else's. Keep it short,
   // lowercase and unique; never change it once real orders exist (old tasks would disappear from the shop).
-  appTag: "myservice",
+  appTag: "lanaweb3",
   legacyAppTags: [],
   kind:  "web3-content", // scope "kind": what is being delivered
   orderIdPrefix: "ord", // order ids look like ord_x7k2…
@@ -14,7 +14,7 @@ const service = {
   // AZZLE market: "micro" (small tasks) or "standard". Addresses come from the pinned manifests in src/config.
   market: "micro",
   priceUsd: 15, // what the customer pays into escrow, in USD (paid in AZL at the live oracle price)
-  turnaround: { label: "within 48 hours", deadlineDays: 7 }, // label is copy; deadlineDays goes on-chain (max 30)
+  turnaround: { label: "within 48 hours", deadlineDays: 2 }, // label is copy; deadlineDays goes on-chain (max 30)
 
   name:  "Lana's Web3 Content Pack",
   agentName: "Lana's Content Agent",
@@ -40,7 +40,7 @@ const service = {
   orderFields: [
     { name: "sourceUrl", type: "url", label: "Your product link", placeholder: "https://github.com/you/project", required: true, public: true, scrape: true,
       help: "A GitHub repo, docs page or website. The agent reads it to write the brief." },
-    { name: "audience", type: "select", label: "Audience", public: true, default: "developers",
+    { name: "audience", type: "select", label: "Audience", default: "developers",
       options: [{ value: "developers", label: "Developers" }, { value: "founders", label: "Founders" }, { value: "consumers", label: "Consumers" }] },
     { name: "notes", type: "textarea", label: "Anything the agent should know", placeholder: "Tone, must-mention features, words to avoid…", maxLength: 2000 },
   ],
@@ -49,8 +49,8 @@ const service = {
   brand: { ink: "#18181B", paper: "#FAFAF9", accent: "#4F46E5", accentInk: "#FFFFFF", radius: "0.75rem", logo: null, ogImage: null },
 
   copy: {
-    heroTitle: "Launch copy for your product, written by an agent.",
-    heroSub: "Paste a link. The agent reads it, writes your copy, and you only release payment once you approve.",
+    heroTitle: "Web3 content that gets your project noticed.",
+    heroSub: "Get 5 natural X posts, 2 alternative hooks, a clear call to action, and 1 revision tailored to your project.",
     orderTitle: "Order",
     orderSub: "Tell the agent what it is working on.",
     ctaOrder: "Start an order",
