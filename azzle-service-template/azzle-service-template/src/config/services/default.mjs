@@ -13,7 +13,7 @@ const service = {
 
   // AZZLE market: "micro" (small tasks) or "standard". Addresses come from the pinned manifests in src/config.
   market: "micro",
-  priceUsd: 5, // what the customer pays into escrow, in USD (paid in AZL at the live oracle price)
+  priceUsd: 15, // what the customer pays into escrow, in USD (paid in AZL at the live oracle price)
   turnaround: { label: "within 48 hours", deadlineDays: 7 }, // label is copy; deadlineDays goes on-chain (max 30)
 
   name: "Agent Service",
